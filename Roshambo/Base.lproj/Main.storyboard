@@ -59,6 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-57" y="36"/>
         </scene>
         <!--Game Result View Controller-->
         <scene sceneID="Rxr-kr-1oZ">
@@ -71,8 +72,59 @@
                     <view key="view" contentMode="scaleToFill" id="OMu-ih-Ni9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="d4J-xN-OCh">
+                                <rect key="frame" x="16" y="20" width="343" height="597"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qh5-V1-LHq">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="298.5"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="38l-4J-6CR">
+                                                <rect key="frame" x="20" y="20" width="303" height="258.5"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="38l-4J-6CR" secondAttribute="trailing" constant="20" id="TQr-RN-lnU"/>
+                                            <constraint firstAttribute="bottom" secondItem="38l-4J-6CR" secondAttribute="bottom" constant="20" id="qOx-8R-p7F"/>
+                                            <constraint firstItem="38l-4J-6CR" firstAttribute="top" secondItem="qh5-V1-LHq" secondAttribute="top" constant="20" id="vAe-fo-t1o"/>
+                                            <constraint firstItem="38l-4J-6CR" firstAttribute="leading" secondItem="qh5-V1-LHq" secondAttribute="leading" constant="20" id="z9T-KB-8WW"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="jvb-Fm-1nN">
+                                        <rect key="frame" x="0.0" y="298.5" width="343" height="298.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1w-hi-Cec">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="149.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fqt-lc-4kX">
+                                                <rect key="frame" x="0.0" y="149.5" width="343" height="149"/>
+                                                <state key="normal" title="PlayAgain"/>
+                                                <connections>
+                                                    <action selector="playAgain:" destination="Zdb-IM-tJW" eventType="touchUpInside" id="fbL-YY-COs"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="d4J-xN-OCh" firstAttribute="top" secondItem="m73-SX-fsj" secondAttribute="bottom" id="6tv-Bg-RDT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="d4J-xN-OCh" secondAttribute="trailing" id="7CD-IV-Jy4"/>
+                            <constraint firstItem="Hkv-DB-WWy" firstAttribute="top" secondItem="d4J-xN-OCh" secondAttribute="bottom" constant="50" id="7Qq-Q2-ylo"/>
+                            <constraint firstItem="d4J-xN-OCh" firstAttribute="leading" secondItem="OMu-ih-Ni9" secondAttribute="leadingMargin" id="SN3-zl-NQN"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playAgainButton" destination="Fqt-lc-4kX" id="Uay-YG-Mk0"/>
+                        <outlet property="resultImage" destination="38l-4J-6CR" id="8yL-py-MkR"/>
+                        <outlet property="resultLabel" destination="B1w-hi-Cec" id="uk6-bY-rWh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kqt-Cc-RAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
