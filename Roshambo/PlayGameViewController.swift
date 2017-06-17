@@ -50,6 +50,22 @@ class PlayGameViewController: UIViewController {
         return (result, imageName)
     }
     
+    // this is for code & segue and segue only method
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination as! GameResultViewController
+        if segue.identifier == "performPaper" {
+            let play = playGame(2)
+            controller.resultImageName = play.1
+            controller.resultMessage = play.0
+            
+        } else if segue.identifier == "performScissors" {
+            let play = playGame(3)
+            controller.resultImageName = play.1
+            controller.resultMessage = play.0
+        }
+        
+    }
+    
     // Code only for Rock move
     @IBAction func performRock() {
         var controller: GameResultViewController
@@ -61,7 +77,11 @@ class PlayGameViewController: UIViewController {
         
         present(controller, animated: true, completion: nil)
     }
-
+    
+    // Code & Segue
+    @IBAction func performPaper(_ sender: Any) {
+        self.performSegue(withIdentifier: "performPaper", sender: self)
+    }
 
 }
 

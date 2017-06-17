@@ -38,10 +38,16 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZk-R8-Dhb" userLabel="Paper">
                                                 <rect key="frame" x="0.0" y="0.0" width="171.5" height="298.5"/>
                                                 <state key="normal" image="paper"/>
+                                                <connections>
+                                                    <action selector="performPaper:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hFH-oD-OQQ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJv-mA-Zfg" userLabel="Scissors">
                                                 <rect key="frame" x="171.5" y="0.0" width="171.5" height="298.5"/>
                                                 <state key="normal" image="scissors"/>
+                                                <connections>
+                                                    <segue destination="Zdb-IM-tJW" kind="show" identifier="performScissors" id="9IF-kP-VXY"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -56,6 +62,9 @@
                             <constraint firstItem="k1P-B8-47d" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qtF-Oq-uKu"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="Zdb-IM-tJW" kind="show" identifier="performPaper" id="KkY-rj-vJr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -120,6 +129,7 @@
                             <constraint firstItem="d4J-xN-OCh" firstAttribute="leading" secondItem="OMu-ih-Ni9" secondAttribute="leadingMargin" id="SN3-zl-NQN"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="qO9-Kd-mvu"/>
                     <connections>
                         <outlet property="playAgainButton" destination="Fqt-lc-4kX" id="Uay-YG-Mk0"/>
                         <outlet property="resultImage" destination="38l-4J-6CR" id="8yL-py-MkR"/>
@@ -136,4 +146,7 @@
         <image name="rock" width="75" height="65"/>
         <image name="scissors" width="75" height="65"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="KkY-rj-vJr"/>
+    </inferredMetricsTieBreakers>
 </document>
