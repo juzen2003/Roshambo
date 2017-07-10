@@ -9,6 +9,8 @@
 import UIKit
 
 class PlayGameViewController: UIViewController {
+    
+    var histroy = [RPSData]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,29 +27,39 @@ class PlayGameViewController: UIViewController {
     }
     
     // generate the game result
-    func playGame(_ playerChoice: Int) -> (String, String) {
+    func playGame(_ playerChoice: Int) -> RPSData {
         
         let playerMove = theMove.init(rawValue: playerChoice)!
         let computerMove = theMove.init(rawValue: randomInt())!
-        let imageName: String
-        let result: String
+        var gameData = RPSData(gameResult: nil, resultMessage: nil, imageName: nil)
+        
+        switch (playerMove, computerMove) {
+        case (.rock, .scissors), (.paper, .rock), (.scissors, .paper):
+            gameData.gameResult = "You Win!"
+        case (.rock, .paper), (.paper, .scissors), (.scissors, .rock):
+            gameData.gameResult = "You Lose!"
+        default:
+            gameData.gameResult = "Tie Game!"
+        }
         
         switch (playerMove, computerMove) {
         case (.rock, .paper), (.paper, .rock):
-            result = "Paper covers Rock!"
-            imageName = "PaperCoversRock"
+            gameData.resultMessage = "Paper covers Rock!"
+            gameData.imageName = "PaperCoversRock"
         case (.rock, .rock), (.paper, .paper), (.scissors, .scissors):
-            result = "It's a Tie!"
-            imageName = "itsATie"
+            gameData.resultMessage = "It's a Tie!"
+            gameData.imageName = "itsATie"
         case (.rock, .scissors), (.scissors, .rock):
-            result = "Rock crushes Scissors!"
-            imageName = "RockCrushesScissors"
+            gameData.resultMessage = "Rock crushes Scissors!"
+            gameData.imageName = "RockCrushesScissors"
         case (.paper, .scissors), (.scissors, .paper):
-            result = "Scissors cut Paper!"
-            imageName = "ScissorsCutPaper"
+            gameData.resultMessage = "Scissors cut Paper!"
+            gameData.imageName = "ScissorsCutPaper"
         }
         
-        return (result, imageName)
+        self.histroy.append(gameData)
+        
+        return gameData
     }
     
     // this is for code & segue and segue only method
@@ -55,13 +67,13 @@ class PlayGameViewController: UIViewController {
         let controller = segue.destination as! GameResultViewController
         if segue.identifier == "performPaper" {
             let play = playGame(2)
-            controller.resultImageName = play.1
-            controller.resultMessage = play.0
+            controller.resultImageName = play.imageName
+            controller.resultMessage = play.resultMessage
             
         } else if segue.identifier == "performScissors" {
             let play = playGame(3)
-            controller.resultImageName = play.1
-            controller.resultMessage = play.0
+            controller.resultImageName = play.imageName
+            controller.resultMessage = play.resultMessage
         }
         
     }
@@ -72,8 +84,8 @@ class PlayGameViewController: UIViewController {
         
         controller = self.storyboard?.instantiateViewController(withIdentifier: "GameResultViewController") as! GameResultViewController
         let play = playGame(1)
-        controller.resultImageName = play.1
-        controller.resultMessage = play.0
+        controller.resultImageName = play.imageName
+        controller.resultMessage = play.resultMessage
         
         present(controller, animated: true, completion: nil)
     }
@@ -83,5 +95,16 @@ class PlayGameViewController: UIViewController {
         self.performSegue(withIdentifier: "performPaper", sender: self)
     }
 
+    // History View
+    @IBAction func HistoryView(_ sender: Any) {
+        var controller: HistoryViewController
+        
+        controller = self.storyboard?.instantiateViewController(withIdentifier: "HistoryViewController") as! HistoryViewController
+        controller.histroy = self.histroy
+        
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    
 }
 
