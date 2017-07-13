@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oXd-zM-lyy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="UzZ-n2-vll">
+            <objects>
+                <navigationController id="oXd-zM-lyy" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="v2o-jb-AO8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="JSk-WU-a7a"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="noL-Vk-0QA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-842" y="36"/>
+        </scene>
         <!--Play Game View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -23,27 +39,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="k1P-B8-47d">
-                                <rect key="frame" x="16" y="20" width="343" height="597"/>
+                                <rect key="frame" x="16" y="64" width="343" height="553"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2N-06-blK" userLabel="Rock">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="199"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="184.5"/>
                                         <state key="normal" image="rock"/>
                                         <connections>
                                             <action selector="performRock" destination="BYZ-38-t0r" eventType="touchUpInside" id="d3B-BY-3YB"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rqc-is-t42">
-                                        <rect key="frame" x="0.0" y="199" width="343" height="199"/>
+                                        <rect key="frame" x="0.0" y="184.5" width="343" height="184"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZk-R8-Dhb" userLabel="Paper">
-                                                <rect key="frame" x="0.0" y="0.0" width="171.5" height="199"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="171.5" height="184"/>
                                                 <state key="normal" image="paper"/>
                                                 <connections>
                                                     <action selector="performPaper:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hFH-oD-OQQ"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJv-mA-Zfg" userLabel="Scissors">
-                                                <rect key="frame" x="171.5" y="0.0" width="171.5" height="199"/>
+                                                <rect key="frame" x="171.5" y="0.0" width="171.5" height="184"/>
                                                 <state key="normal" image="scissors"/>
                                                 <connections>
                                                     <segue destination="Zdb-IM-tJW" kind="show" identifier="performScissors" id="9IF-kP-VXY"/>
@@ -52,7 +68,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SX0-bJ-evj">
-                                        <rect key="frame" x="0.0" y="398" width="343" height="199"/>
+                                        <rect key="frame" x="0.0" y="368.5" width="343" height="184.5"/>
                                         <state key="normal" title="History"/>
                                         <connections>
                                             <action selector="HistoryView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PBY-40-rOg"/>
@@ -69,6 +85,7 @@
                             <constraint firstItem="k1P-B8-47d" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qtF-Oq-uKu"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="3Lh-Gj-XGq"/>
                     <connections>
                         <segue destination="Zdb-IM-tJW" kind="show" identifier="performPaper" id="KkY-rj-vJr"/>
                     </connections>
@@ -231,6 +248,6 @@
         <image name="scissors" width="75" height="65"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KkY-rj-vJr"/>
+        <segue reference="9IF-kP-VXY"/>
     </inferredMetricsTieBreakers>
 </document>

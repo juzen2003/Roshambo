@@ -43,7 +43,9 @@ class GameResultViewController: UIViewController {
     }
 
     @IBAction func playAgain(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        if let navigationVC = self.navigationController {
+            navigationVC.popToRootViewController(animated: true)
+        }
     }
 
 }

@@ -87,7 +87,9 @@ class PlayGameViewController: UIViewController {
         controller.resultImageName = play.imageName
         controller.resultMessage = play.resultMessage
         
-        present(controller, animated: true, completion: nil)
+        if let navigationVC = self.navigationController {
+            navigationVC.pushViewController(controller, animated: true)
+        }
     }
     
     // Code & Segue
@@ -102,7 +104,9 @@ class PlayGameViewController: UIViewController {
         controller = self.storyboard?.instantiateViewController(withIdentifier: "HistoryViewController") as! HistoryViewController
         controller.histroy = self.histroy
         
-        self.present(controller, animated: true, completion: nil)
+        if let navigationVC = self.navigationController {
+            navigationVC.pushViewController(controller, animated: true)
+        }
     }
     
     

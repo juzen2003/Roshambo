@@ -23,12 +23,14 @@ class HistoryViewController: UIViewController, UITableViewDataSource {
         cell.textLabel?.text = gameResult.gameResult!
         cell.detailTextLabel?.text = gameResult.resultMessage!
         cell.imageView?.image = UIImage(named: gameResult.imageName!)
-        cell.imageView?.contentMode = .scaleAspectFit
+        cell.imageView?.draw(CGRect(x: 0, y: 0, width: 40, height: 40))
         
         return cell
     }
     
     @IBAction func OK(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        if let navigationVC = self.navigationController {
+            navigationVC.popToRootViewController(animated: true)
+        }
     }
 }
