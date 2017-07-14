@@ -23,7 +23,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource {
         cell.textLabel?.text = gameResult.gameResult!
         cell.detailTextLabel?.text = gameResult.resultMessage!
         cell.imageView?.image = UIImage(named: gameResult.imageName!)
-        cell.imageView?.draw(CGRect(x: 0, y: 0, width: 40, height: 40))
+        cell.imageView?.sizeToFit()
         
         return cell
     }
